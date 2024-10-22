@@ -1,0 +1,35 @@
+header{
+    width: 100%;
+    background-color: rgb(63, 63, 201);
+    position: relative;
+    display: flex;
+    
+}
+.header {
+    display: flex;
+    position: relative;
+    padding-left: 200px;
+    color: white;
+    flex-direction: column;
+    
+}
+
+h3 {
+    padding-left: 32px;
+    margin: 0px;
+    display: flex;
+}
+h4 {
+    margin: 0px;
+    display: flex;
+}
+/* как опустить h4? */
+/* как поднять череп */
+
+#skull{
+    padding-left: 0px;
+    display: flex;
+    position: absolute;
+}
+#enter {
+}
