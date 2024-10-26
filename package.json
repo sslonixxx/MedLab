@@ -1,0 +1,24 @@
+{
+  "name": "medlab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "gulp-less": "^5.0.0",
+    "gulp-load-plugins": "^2.0.8",
+    "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-pug": "^5.0.0"
+  }
+}
