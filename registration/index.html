@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title></title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <img src="../images/skull.png" alt="skull" id="skull">
+            <div class="navbar-logo-text">
+                <h3> Try not to </h4>
+                <h2> DIE</h3>
+            </div>
+        </div>
+        <div class="navbar-enter">
+            <a href="" id="enter">Вход</a>
+        </div>
+    </header>
+        <main>
+            <div class="container">
+                <h1 class="title-form"> Регистрация</h1>
+                <form class="container-form" id ="registration" action="/apply/" method="POST" class="form">
+                        <div class="container-form-input-box">
+                            <label for="name">Имя</label>
+                            <input class="input" type="text" name="name" id="name" placeholder="Иванов Иван Иванович" required>
+                        </div>
+                        <div class = "column">
+                            <div class="container-form-input-box">
+                                <label for="gender">Пол</label>
+                                <select class="gender-date-select" name="gender" id="gender">
+
+                                    <option value="Male">Мужской</option>
+                                    <option value="Female">Женский</option>
+                                </select>
+                            </div>
+                            <div class="container-form-input-box">
+                                <label for="date">Дата рождения</label>
+                                <input class="gender-date-input" type="date" name="date" id="date"  min="1900-01-01"> 
+                            </div>
+
+                        </div>
+                        <div class="container-form-input-box">
+                            <label for="phone"> Телефон</label>
+                            <input class="input" type="phone" name="phone" id="phone" placeholder="+7 (xxx) xxx-xx-xx" required>
+                        </div>
+                        <div class="container-form-input-box">
+                            <label for="spec">Специальность</label>
+                            <select name="spec" id="spec">
+                                    <option value="obstetrician_gynecologist">Акушер-гинеколог</option>
+                                    <option value="anesthesiologist_reanimatologist">Анестезиолог-реаниматолог</option>
+                                    <option value="dermatovenerologist">Дерматовенеролог</option>
+                                    <option value="infectiologist">Инфекционист</option>
+                                    <option value="cardiologist">Кардиолог</option>
+                                    <option value="neurologist">Невролог</option>
+                                    <option value="oncologist">Онколог</option>
+                                    <option value="otorhinolaryngologist">Отоларинголог</option>
+                                    <option value="ophthalmologist">Офтальмолог</option>
+                                    <option value="psychiatrist">Психиатр</option>
+                                    <option value="psychologist">Психолог</option>
+                                    <option value="radiologist">Рентгенолог</option>
+                                    <option value="dentist">Стоматолог</option>
+                                    <option value="therapist">Терапевт</option>
+                                    <option value="ultrasound_specialist">УЗИ-специалист</option>
+                                    <option value="urologist">Уролог</option>
+                                    <option value="surgeon">Хирург</option>
+                                    <option value="endocrinologist">Эндокринолог</option>
+                                </select>
+                        </div>
+                        <div class="container-form-input-box">
+                            <label for="email">Email </label>
+                            <input class="input" type="email" name="email" id="email" placeholder="name@example.com" required>
+                        </div>
+                        <div class="container-form-input-box">
+                            <label for="password"> Пароль</label>
+                            <input class="input" type="password" name="password" id="password" required>
+                        </div>
+                            
+                        <button class ="buttons" id ="btnEnter" type="submit"> Зарегистрироваться</button>
+                </form>
+            </div>
+        </main>
+        <script src="script.js"></script>
+</body>
+</html>

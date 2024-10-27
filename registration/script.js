@@ -6,12 +6,19 @@ async function handleFormSubmit(event) {
     const form = document.getElementById('authorization');
     const formData = new FormData(form);
     
-    const email = formData.get('email');
-    const password = formData.get('password');
+    const data = {
+        name: formData.get('name'),
+        password: formData.get('password'),
+        email: formData.get('email'),
+        birthday: new Date(formData.get('date')).toISOString(), 
+        gender: formData.get('gender'),
+        phone: formData.get('phone'),
+        speciality: formData.get('spec') 
+    };
 
     
     try {
-        const response = await sendData(email,password);
+        const response = await sendData(data);
         if (response.ok) {
             const data = await response.json();
             const token = data.token;
@@ -28,20 +35,12 @@ async function handleFormSubmit(event) {
           }
 }
 
-async function sendData(email, password) {
-    return await fetch('https://mis-api.kreosoft.space/api/doctor/login', {
+async function sendData(data) {
+    return await fetch('https://mis-api.kreosoft.space/api/doctor/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            email: email,
-            password: password
-          }),
+        body: JSON.stringify(data),
     });
 }
-
-document.getElementById('btnRegistration').addEventListener('click', () => {
-    console.log("хз бляяя");
-    window.location.href = '../registration/index.html';
-});

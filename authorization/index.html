@@ -7,28 +7,34 @@
     <title></title>
 </head>
 <body>
-    <header>
-        <div class="header-left">
+    <header class="navbar">
+        <div class="navbar-logo">
             <img src="../images/skull.png" alt="skull" id="skull">
-            <div class="title">
+            <div class="navbar-logo-text">
                 <h3> Try not to </h4>
                 <h2> DIE</h3>
             </div>
         </div>
-        <div class="header-right">
-            <button id="enter"> Вход</button>
+        <div class="navbar-enter">
+            <a href="" id="enter">Вход</a>
         </div>
     </header>
     <main>
-        <form id ="authorization" action="/apply/" method="POST" class="form">
+        <div class="container">
             <h1 class="title-form"> Вход</h1>
-                <label for="email">Email </label>
-                <input class="input" type="email" name="email" id="email" placeholder="name@example.com" required>
-                <label for="password"> Пароль</label>
-                <input class="input" type="password" name="password" id="password" required>
-                <button class ="buttons" id ="btnEnter" type="submit"> Войти</button>
-                <button class ="buttons" id="btnRegistration"> Регистрация</button>
-        </form>
+            <form class="container-form" id ="authorization" action="/apply/" method="POST" class="form">
+                    <div class="container-form-input-box">
+                        <label for="email">Email </label>
+                        <input class="input" type="email" name="email" id="email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="container-form-input-box">
+                        <label for="password">Пароль</label>
+                        <input class="password" type="password" name="password" id="password" required>
+                    </div>
+                    <button class ="buttons" id ="btnEnter" type="submit">Войти</button>
+            </form>
+            <button class ="buttons" id ="btnRegistration">Регистрация</button>
+        </div>
     </main>
     <script src="script.js"></script>
 
