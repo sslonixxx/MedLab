@@ -34,3 +34,52 @@ if (token) {
 } else {
     console.error('Auth token not found in localStorage');
 }
+
+
+document.getElementById('btnEnter').addEventListener('click', handleProfileUpdate);
+
+async function handleProfileUpdate(event) {
+    event.preventDefault();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.error('Auth token not found in localStorage');
+        return;
+    }
+
+    const name = document.getElementById('name').value;
+    const gender = document.getElementById('gender').value;
+    const birthday = document.getElementById('birthday').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+
+    const profileData = {
+        name: name,
+        gender: gender,
+        birthday: birthday,
+        phone: phone,
+        email: email
+    };
+
+    try {
+        const response = await fetch('https://mis-api.kreosoft.space/api/doctor/profile', {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(profileData)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Profile update error:', errorData);
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        console.log('Profile updated successfully');
+        alert('Профиль успешно обновлен!');
+    } catch (error) {
+        console.error('Error updating profile:', error);
+    }
+}
