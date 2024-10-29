@@ -40,8 +40,6 @@ async function sendData(email, password) {
           }),
     });
 }
-
 document.getElementById('btnRegistration').addEventListener('click', () => {
-    console.log("хз бляяя");
     window.location.href = '../registration/index.html';
 });
