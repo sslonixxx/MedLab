@@ -1,4 +1,9 @@
 const token = localStorage.getItem('token');
+const userMenuContainer = document.getElementById('userMenuContainer');
+const doctorName = document.getElementById('doctorName');
+const dropdownMenu = document.getElementById('dropdownMenu');
+const logoutButton = document.getElementById('logout');
+
 
 
 if (token) {
@@ -27,6 +32,10 @@ if (token) {
         if (gender) gender.value = data.gender || '';
         if (email) email.value = data.email || '';
         if (phone) phone.value = data.phone || '';
+
+        doctorName.textContent = data.name; 
+        localStorage.setItem('doctorName', data.name);
+        
     })
     .catch(error => {
         console.error('Error fetching user profile:', error);

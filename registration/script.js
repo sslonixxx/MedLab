@@ -13,6 +13,7 @@ async function handleRegistrationFormSubmit(event) {
     const gender = formData.get('gender');
     const phone = formData.get('phone');
     const speciality = formData.get('spec');
+    
 
     try {
         const response = await sendRegistrationData({

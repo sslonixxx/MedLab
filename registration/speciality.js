@@ -1,6 +1,6 @@
 async function fetchSpecialities() {
     try {
-        const response = await fetch('https://mis-api.kreosoft.space/api/dictionary/speciality?page=1&size=5')
+        const response = await fetch('https://mis-api.kreosoft.space/api/dictionary/speciality?page=1&size=20')
         if (!response.ok) {
             throw new Error(`Ошибка: ${response.statusText}`);
         }

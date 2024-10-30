@@ -23,13 +23,21 @@ gulp.task('less-profile', function() {
         .pipe(gulp.dest('./profile'));
 })
 
+gulp.task('less-patients', function() {
+    return gulp.src('./patients/style.less')
+        .pipe(less())
+        .pipe(cleanCss())
+        .pipe(gulp.dest('./patients'));
+})
+
 gulp.task('watch', function() {
     gulp.watch('./authorization/style.less', gulp.series('less-authorization'));
     gulp.watch('./registration/style.less', gulp.series('less-registration'));
+    gulp.watch('./patients/style.less', gulp.series('less-patients'));
     gulp.watch('./profile/style.less', gulp.series('less-profile'));
 })
 
 
 
-gulp.task('less', gulp.series('less-authorization', 'less-registration','less-profile'));
+gulp.task('less', gulp.series('less-authorization', 'less-registration','less-profile','less-patients'));
 gulp.task('default', gulp.series('less', 'watch'));

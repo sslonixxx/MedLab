@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <header class="navbar">
+            <div class="navbar-logo">
+                <img src="../images/skull.png" alt="skull" id="skull">
+                <div class="navbar-logo-text">
+                    <h3> Try not to </h4>
+                    <h2> DIE</h3>
+                </div>
+            </div>
+            <div class="navbar-links">
+            <a href="../patients/index.html" class="navbar-links-link">Пациенты</a>
+            <a href="" class="navbar-links-link" >Консультации</a>
+            <a href="" class="navbar-links-link" >Отчеты и статистика</a>
+            
+            </div>
+            <div class="navbar-enter" id="userMenuContainer">
+                <div id="userMenu" class="user-menu">
+                    <span id="doctorName" class="doctorName"></span>
+                    <span class="dropdown-arrow">▼</span>
+                    <div class="dropdown-content hidden" id="dropdownMenu">
+                        <a href="/profile">Профиль</a>
+                        <a href="#" id="logout">Выход</a>
+                    </div>
+                </div>
+            </div>            
+    </header>
+        <main>
+            <div class="wrap-container">
+            <div class="container">
+                <h1 class="title-form"> Фильтры и сортировка</h1>
+                <form class="container-form" id ="filterForm" action="/apply/" method="POST" class="form">
+                        <div class = "column">
+                            <div class="container-form-input-box">
+                                <label for="name">Имя</label>
+                                <input class="input" type="text" name="name" id="name" placeholder="Иванов Иван Иванович">
+                            </div>
+                            <div class="container-form-input-box">
+                                <label for="conclusions">Имеющиеся заключения</label>
+                                <select name="conclusions" id="conclusions">
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="column">
+                            <div class="switch-wrap">
+                            <label class="switch">
+                                <input class="scheduledVisits" name="scheduledVisits" id="scheduledVisits" type="checkbox">
+                                <span class="slider round"></span>
+                              </label>
+                              <p class="swith-text">Есть запланированные визиты</p>
+                              </div>
+                            <div class="switch-wrap">
+                              <label class="switch">
+                                <input name= "onlyMine" id="onlyMine" type="checkbox">
+                                <span class="slider round"></span>
+                              </label>
+                              <p class="swith-text"> Мои пациенты</p>
+                            </div>
+                              <label>Сортировка пациентов
+                              <select name="sorting" id="sorting">
+                                <option value="nameAsc" class="sort">По имени (А-Я)</option>
+                                <option value="nameDesc" class="sort">По имени (Я-А)</option>
+                                <option value="CreateAsc" class="sort">По дате создания (сначала новые)</option>
+                                <option value="CreateDesc" class="sort">По дате создания (сначала старые)</option>
+                                <option value="InspectionAsc" class="sort">По дате осмотра (сначала новые)</option>
+                                <option value="InspectionDesc" class="sort">По дате осмотра (сначала старые)</option>
+                              </select>
+                            </label>
+                        </div>
+                        <div class="column">
+                            <div class="container-form-input-box">
+                                <label for="size">Число пациентов на странице</label>
+                                <select name="size" id="size">
+                                    <option value="4" class="count">4</option>
+                                    <option value="5" class="count">5</option>
+                                    <option value="6" class="count">6</option>
+                                    <option value="7" class="count">7</option>
+                                    <option value="8" class="count">8</option>
+                                    </select>
+                            </div>
+                            <div class="container-form-input-box">
+                                <button class="buttons" id="search">Поиск</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+            <ul class="pationList">
+            </ul>
+            <nav class="pagination">
+                <button id="prevPage" class="pagination-arrow">&laquo; Назад</button>
+                <div id="paginationNumbers" class="pagination-numbers"></div>
+                <button id="nextPage" class="pagination-arrow">Вперед &raquo;</button>
+            </nav>
+            
+        </div>
+        </main>
+        <script src="conclusions.mjs" type="module"></script>
+        <script src="script.mjs" type="module"></script>
+</body>
+</html>

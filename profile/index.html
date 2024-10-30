@@ -16,14 +16,21 @@
                 </div>
             </div>
             <div class="navbar-links">
-            <a href="" class="navbar-links-link" >Пациенты</a>
+            <a href="../patients/index.html" class="navbar-links-link">Пациенты</a>
             <a href="" class="navbar-links-link" >Консультации</a>
             <a href="" class="navbar-links-link" >Отчеты и статистика</a>
             
             </div>
-            <div class="navbar-enter">
-                <a href="" id="enter">Вход</a>
-            </div>
+            <div class="navbar-enter" id="userMenuContainer">
+                <div id="userMenu" class="user-menu">
+                    <span id="doctorName" class="doctorName"></span>
+                    <span class="dropdown-arrow">▼</span>
+                    <div class="dropdown-content hidden" id="dropdownMenu">
+                        <a href="/profile">Профиль</a>
+                        <a href="#" id="logout">Выход</a>
+                    </div>
+                </div>
+            </div>            
         </header>
         <main>
             <div class="container">
@@ -38,8 +45,8 @@
                                 <label for="gender">Пол</label>
                                 <select class="gender-date-select" name="gender" id="gender">
 
-                                    <option value="male">Мужской</option>
-                                    <option value="female">Женский</option>
+                                    <option value="Male">Мужской</option>
+                                    <option value="Female">Женский</option>
                                 </select>
                             </div>
                             <div class="container-form-input-box">
