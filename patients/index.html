@@ -26,8 +26,8 @@
                     <span id="doctorName" class="doctorName"></span>
                     <span class="dropdown-arrow">▼</span>
                     <div class="dropdown-content hidden" id="dropdownMenu">
-                        <a href="/profile">Профиль</a>
-                        <a href="#" id="logout">Выход</a>
+                        <button id="profile"> Профиль</button>
+                        <button id="logout"> Выход</button>
                     </div>
                 </div>
             </div>            
@@ -66,8 +66,8 @@
                             </div>
                               <label>Сортировка пациентов
                               <select name="sorting" id="sorting">
-                                <option value="nameAsc" class="sort">По имени (А-Я)</option>
-                                <option value="nameDesc" class="sort">По имени (Я-А)</option>
+                                <option value="NameAsc" class="sort">По имени (А-Я)</option>
+                                <option value="NameDesc" class="sort">По имени (Я-А)</option>
                                 <option value="CreateAsc" class="sort">По дате создания (сначала новые)</option>
                                 <option value="CreateDesc" class="sort">По дате создания (сначала старые)</option>
                                 <option value="InspectionAsc" class="sort">По дате осмотра (сначала новые)</option>
@@ -84,21 +84,33 @@
                                     <option value="6" class="count">6</option>
                                     <option value="7" class="count">7</option>
                                     <option value="8" class="count">8</option>
+                                    <option value="9" class="count">9</option>
+                                    <option value="10" class="count">10</option>
+                                    <option value="11" class="count">11</option>
+                                    <option value="12" class="count">12</option>
+                                    <option value="13" class="count">13</option>
+                                    <option value="14" class="count">14</option>
+                                    <option value="15" class="count">15</option>
                                     </select>
                             </div>
                             <div class="container-form-input-box">
-                                <button class="buttons" id="search">Поиск</button>
+                                <button class="buttons" name="search" id="search">Поиск</button>
                             </div>
                         </div>
                 </form>
             </div>
-            <ul class="pationList">
+            <ul class="patientList">
             </ul>
             <nav class="pagination">
-                <button id="prevPage" class="pagination-arrow">&laquo; Назад</button>
-                <div id="paginationNumbers" class="pagination-numbers"></div>
-                <button id="nextPage" class="pagination-arrow">Вперед &raquo;</button>
+                <button class="paginationBtn" id="paginationBtnPrev">prev</button>
+                <button class="paginationBtn" id="paginationBtn1">1</button>
+                <button class="paginationBtn" id="paginationBtn2">2</button>
+                <button class="paginationBtn" id="paginationBtn3">3</button>
+                <button class="paginationBtn" id="paginationBtn4">4</button>
+                <button class="paginationBtn" id="paginationBtn5">5</button>
+                <button class="paginationBtn" id="paginationBtnNext">next</button>
             </nav>
+            
             
         </div>
         </main>

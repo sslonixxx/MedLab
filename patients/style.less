@@ -174,56 +174,6 @@ input, select, .buttons {
  label{
     color: @grey-color
  }
-.pationList {
-    display: grid;
-    grid-template-columns: 1fr; /* Одна колонка по умолчанию */
-    gap: 10px;
-    margin-top: 2%;
-    height: auto;
-    padding: 20px;
-}
-
-@media (min-width: 768px) {
-    .pationList {
-        grid-template-columns: 1fr 1fr; /* Две колонки для больших экранов */
-    }
-}
-
-li {
-    background-color: @background-form-color;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-}
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    font-size: 1rem;
-}
-
-.pagination-arrow,
-.pagination-number {
-    padding: 8px 12px;
-    border: 1px solid @grey-color;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: white;
-    color: @header-color;
-    transition: background-color 0.3s;
-}
-
-.pagination-arrow:hover,
-.pagination-number:hover {
-    background-color: @background-form-color;
-}
-
-.pagination-number.active {
-    background-color: @button-color;
-    color: white;
-}
 .dropdown-content {
     display: none;
     position: absolute;
@@ -233,14 +183,17 @@ li {
     min-width: 150px;
 }
 
-.dropdown-content a {
+.dropdown-content button {
+    width: 100%;
     color: black; 
     padding: 10px 20px;
     text-decoration: none;
     display: block;
+    cursor: pointer;
+    border: none;
+    background-color: white;
 }
-
-.dropdown-content a:hover {
+.dropdown-content button:hover {
     background-color: #f1f1f1; 
 }
 
@@ -261,3 +214,38 @@ li {
     font-size: 0.5em; 
     vertical-align: middle; 
 }
+
+.patientList {
+    display: grid;
+    padding-top: 15px;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 700px){
+    .patientList{
+    grid-template-columns: 1fr;
+    }
+}
+li {
+    list-style: none;
+    background-color: @background-form-color;
+    padding: 15px;
+    border-radius: 1px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+.paginationBtn {
+    padding: 8px;
+    margin: 5px;
+    background-color: #f6f6fc;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#paginationBtn3{
+    border: 1px solid #119be6;
+}
+
