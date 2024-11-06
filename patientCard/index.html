@@ -44,13 +44,13 @@
                 <form class="container-form" id ="filterForm" action="/apply/" method="POST" class="form">
                         <div class = "column">
                             <div class="container-form-input-box">
-                                <label for="conclusions">Имеющиеся заключения</label>
-                                <select name="conclusions" id="conclusions">
+                                <label for="diagnoses">МКБ-10</label>
+                                <select name="diagnoses" id="diagnoses">
                                 </select>
                             </div>
                             <div class="switch-wrap">
                                 <label class="switch">
-                                    <input class="scheduledVisits" name="scheduledVisits" id="scheduledVisits" type="checkbox">
+                                    <input class="grouped" name="grouped" id="grouped" type="checkbox">
                                     <span class="slider round"></span>
                                   </label>
                                   <p class="swith-text">Сгруппировать по повторным</p>
@@ -87,7 +87,7 @@
                         </div>
                 </form>
             </div>
-            <ul class="patientList">
+            <ul class="inspectionsList">
             </ul>
             <nav class="pagination">
                 <button class="paginationBtn" id="paginationBtnPrev">prev</button>
@@ -101,5 +101,6 @@
         </div>
         </main>
         <script src="script.mjs" type="module"></script>
+        <script src="diagnoses.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 import { Conclusions } from "./conclusions.mjs";
-import { getPatientCard} from "../patientCard/script.mjs"
 
     doctorName.textContent = localStorage.getItem("doctorName");
     document.getElementById("profile").addEventListener("click", () => {
@@ -71,7 +70,11 @@ import { getPatientCard} from "../patientCard/script.mjs"
     
         url += `?${queryParams.join('&')}`;
         const urlString = new URL(window.location.href);
-        urlString.searchParams.set('page', page);
+        urlString.searchParams.set('name', params.name);
+        urlString.searchParams.set('conclusions', params.conclusions);
+        urlString.searchParams.set('sorting', params.sorting);
+        urlString.searchParams.set('scheduledVisits', params.scheduledVisits);
+        urlString.searchParams.set('onlyMine', params.onlyMine);
         urlString.searchParams.set('size', params.size);
         window.history.pushState(null, null, urlString);
     

@@ -4,6 +4,18 @@ const doctorName = document.getElementById('doctorName');
 const dropdownMenu = document.getElementById('dropdownMenu');
 const logoutButton = document.getElementById('logout');
 
+document.getElementById("logout").addEventListener("click", async (event) => {
+    const response = await fetch('https://mis-api.kreosoft.space/api/doctor/logout', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        }
+    })
+    localStorage.clear;
+    window.location.href = '../authorization/index.html'; 
+    console.log(response)
+}
+)
 
 
 if (token) {
