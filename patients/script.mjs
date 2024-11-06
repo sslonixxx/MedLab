@@ -1,4 +1,5 @@
 import { Conclusions } from "./conclusions.mjs";
+import { getPatientCard} from "../patientCard/script.mjs"
 
     doctorName.textContent = localStorage.getItem("doctorName");
     document.getElementById("profile").addEventListener("click", () => {
@@ -21,8 +22,7 @@ import { Conclusions } from "./conclusions.mjs";
     const conclusionSelect = document.getElementById('conclusions');
     const searchButton = document.getElementById('search')
 
-   
-    function getConclusions(Conclusions) {
+   function getConclusions(Conclusions) {
         Object.values(Conclusions).forEach(element => {
             const option = document.createElement('option');
             option.value = element;
@@ -131,7 +131,7 @@ import { Conclusions } from "./conclusions.mjs";
                 const patientCard = document.createElement("li")
                 patientCard.classList.add("patientCard")
                 patientCard.addEventListener("click", (event) => {
-                    window.location.href = '../patientCard/index.html'; 
+                window.location.href = `../patientCard/index.html?patientId=${el.id}`;
                 })
 
                 patientCard.innerHTML = `
