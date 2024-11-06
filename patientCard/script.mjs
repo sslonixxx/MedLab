@@ -161,10 +161,15 @@ async function main() {
             })
 
             patientCard.innerHTML = `
-            <h3>${el.name}</h3>
-            <p>Email — ${el.email || 'Не указан'}</p>
-            <p>Пол — ${el.gender === 'Male' ? 'Мужчина' : 'Женщина'}</p>
-            <p>Дата рождения — ${formatDate(el.birthday)}</p> `
+            <div class = "wrap-inspection">
+            <span id="dateInspection">${formatDate(el.date)} </span>
+            <h3>Амбулаторный осмотр</h3>
+            <button class="btnDetails">Детали осмотра</button>
+
+            </div>
+            <p>Заключение: ${el.conclusion || 'Не указан'}</p>
+            <p>Основной диагноз: ${el.diagnosis.name} (${el.diagnosis.code})</p>
+            <p>Медицинский работник: ${el.doctor}</p> `
             inspectionsList.appendChild (patientCard)
 
         })
