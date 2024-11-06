@@ -1,3 +1,4 @@
+import { Conclusions } from "../patients/conclusions.mjs";
 const token = localStorage.getItem('token')
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -28,6 +29,8 @@ async function getPatientCard(patientId) {
     let patient = document.querySelector(".wrap-container2")
     let patientName=document.createElement("h2")
     let birthday = document.createElement("div")
+
+    let imageGender = document.createElement("img")
 
     
 
@@ -88,8 +91,6 @@ async function fetchInspections(page = 1) {
     let url = `https://mis-api.kreosoft.space/api/patient/${patientId}/inspections`;
     const queryParams = [];
     if (params.grouped !== undefined) queryParams.push(`grouped=${params.grouped}`);
-    // if (params.diagnos) queryParams.push(`icdRoots=${encodeURIComponent(params.diagnos)}`);
-
     queryParams.push(`page=${page}`);
     queryParams.push(`size=${params.size || pageSize}`);
 
@@ -154,23 +155,37 @@ async function main() {
         }
 
         arrData.forEach((el) => {
-            const patientCard = document.createElement("li")
-            patientCard.classList.add("patientCard")
-            patientCard.addEventListener("click", (event) => {
-            window.location.href = `../patientCard/index.html?patientId=${el.id}`;
+            let inspectionCard = document.createElement("li")
+            inspectionCard.classList.add('inspectionCard')
+            inspectionCard.addEventListener("click", (event) => {
             })
-
-            patientCard.innerHTML = `
+            
+            function getConclusions(Conclusions) {
+                for (const [key, value] of Object.entries(Conclusions)) {
+                    if (key === el.conclusion) {
+                        return value; 
+                    }
+                }
+            }
+                
+            let conclusion = getConclusions(Conclusions)
+            
+            inspectionCard.innerHTML = `
             <div class = "wrap-inspection">
             <span id="dateInspection">${formatDate(el.date)} </span>
             <h3>Амбулаторный осмотр</h3>
             <button class="btnDetails">Детали осмотра</button>
-
             </div>
-            <p>Заключение: ${el.conclusion || 'Не указан'}</p>
+            <p>Заключение: ${conclusion || 'Не указан'}</p>
             <p>Основной диагноз: ${el.diagnosis.name} (${el.diagnosis.code})</p>
             <p>Медицинский работник: ${el.doctor}</p> `
-            inspectionsList.appendChild (patientCard)
+            
+            
+            inspectionsList.appendChild(inspectionCard)
+            if (el.conclusion=="Death") {
+                console.log("ooooo")
+                inspectionCard.classList.add('isDeath')
+            }
 
         })
     }
