@@ -4,17 +4,24 @@ import { Conclusions } from "./conclusions.mjs";
     document.getElementById("profile").addEventListener("click", () => {
         window.location.href = '../profile/index.html'; 
     })
+    const token = localStorage.getItem('token')
     document.getElementById("logout").addEventListener("click", async (event) => {
         const response = await fetch('https://mis-api.kreosoft.space/api/doctor/logout', {
-            method: 'POST'
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
         })
+        localStorage.clear;
+        window.location.href = '../authorization/index.html'; 
+        console.log(response)
     }
     )
 
     const conclusionSelect = document.getElementById('conclusions');
     const searchButton = document.getElementById('search')
 
-    // Заполнение выпадающего списка заключений
+   
     function getConclusions(Conclusions) {
         Object.values(Conclusions).forEach(element => {
             const option = document.createElement('option');
@@ -85,11 +92,10 @@ import { Conclusions } from "./conclusions.mjs";
     
             var patients = responseData.patients || [];
         
-            // Получаем количество записей и страниц
-            var totalCount = responseData.pagination.count || 0; // Общее количество записей
-            var currentPage = responseData.pagination.current || 0;
-            var pageSize = responseData.pagination.size || 1; // Размер страницы
-            var totalPages = Math.ceil(totalCount / pageSize); // Расчет общего количества страниц
+            
+            var totalCount = responseData.pagination.count || 0; 
+            var pageSize = responseData.pagination.size || 1; 
+            var totalPages = Math.ceil(totalCount / pageSize); 
     
             console.log("Общее количество записей:", totalCount);
             console.log("Общее количество страниц:", totalPages);
@@ -124,6 +130,9 @@ import { Conclusions } from "./conclusions.mjs";
             arrData.forEach((el) => {
                 const patientCard = document.createElement("li")
                 patientCard.classList.add("patientCard")
+                patientCard.addEventListener("click", (event) => {
+                    window.location.href = '../patientCard/index.html'; 
+                })
 
                 patientCard.innerHTML = `
                 <h3>${el.name}</h3>
@@ -131,6 +140,7 @@ import { Conclusions } from "./conclusions.mjs";
                 <p>Пол — ${el.gender === 'Male' ? 'Мужчина' : 'Женщина'}</p>
                 <p>Дата рождения — ${formatDate(el.birthday)}</p> `
                 patientList.appendChild (patientCard)
+
             })
         }
 
@@ -193,7 +203,7 @@ import { Conclusions } from "./conclusions.mjs";
 
     function displayPagination(page) {
         paginationBtn3.textContent = page;
-        paginationBtn2.textContent = (parseInt(paginationBtn3.textContent, 10) - 1 < 0 ? totalPages : parseInt(paginationBtn3.textContent, 10) - 1)
+        paginationBtn2.textContent = (parseInt(paginationBtn3.textContent, 10) - 1 <= 0 ? totalPages : parseInt(paginationBtn3.textContent, 10) - 1)
         paginationBtn1.textContent = (parseInt(paginationBtn2.textContent, 10) - 1 <= 0 ? totalPages : parseInt(paginationBtn2.textContent, 10) - 1)
         paginationBtn4.textContent = (parseInt(paginationBtn3.textContent, 10) + 1 > totalPages ? 1 : parseInt(paginationBtn3.textContent, 10) + 1)
         paginationBtn5.textContent = (parseInt(paginationBtn4.textContent, 10) + 1 > totalPages ? 1 : parseInt(paginationBtn4.textContent, 10) + 1)
@@ -207,7 +217,55 @@ import { Conclusions } from "./conclusions.mjs";
         displayList(patients);
     }
 
+    
+    let modal = document.querySelector('.modal-container');
+    document.getElementById('btnAddPatient').addEventListener("click", (event) => {
+        modal.classList.add('is-open')
+    })
+    close = document.querySelector('.close');
+    close.addEventListener('click', function() {
+        modal.classList.remove('is-open')
+    });
+
+    document.getElementById('btnAdd').addEventListener('click', handleFormSubmit);
+
+    async function handleFormSubmit(event) {
+        event.preventDefault();
+    
+        const form = document.getElementById('addPatient');
+        const formData = new FormData(form);
+        const name = formData.get('name');
+        const birthday = new Date(formData.get('birthday')).toISOString();
+        const gender = formData.get('gender');
+        const dataAddPatient = { name, birthday, gender };
+        
+        try {
+            const response = await sendData(dataAddPatient);
+            if (response.ok) {
+               
+               } else {
+                const error = await response.json();
+                console.error('Login error', error);
+               }
+              } catch (error) {
+               console.error('Error:', error);
+              }
+    }
+    
+    async function sendData(dataAddPatient) {
+        return await fetch('https://mis-api.kreosoft.space/api/patient', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataAddPatient),
+        });
+    }
+
     main();
+
+    
   
     
     

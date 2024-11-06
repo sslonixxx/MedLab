@@ -221,7 +221,7 @@ input, select, .buttons {
     gap: 10px;
     grid-template-columns: 1fr 1fr;
 }
-@media (max-width: 700px){
+@media (max-width: 1000px){
     .patientList{
     grid-template-columns: 1fr;
     }
@@ -231,6 +231,7 @@ li {
     background-color: @background-form-color;
     padding: 15px;
     border-radius: 1px;
+    cursor: pointer;
 }
 .pagination {
     display: flex;
@@ -248,4 +249,61 @@ li {
 #paginationBtn3{
     border: 1px solid #119be6;
 }
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+}
+.btnAddPatient {
+    position: relative;
+    outline: none;
+    margin-top: 8px;
+    border: 1px solid rgb(193, 186, 186);
+    border-radius: 3px;
+    padding: 0 15px;
+    cursor: pointer;
+    background-color: @button-color;
+    color: white;
+}
+.modal-container {
+    position: fixed;
+    left: 0;
+    top: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh; 
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    width: 100%; 
+    height: 100%; 
+    max-width: 500px; 
+    max-height: 400px; 
+    background-color: #fff; 
+  }
+  .close {
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+   }
+   .modal-container { 
+    pointer-events: none; 
+    opacity: 0;
+  }
+  .modal-container.is-open { 
+    pointer-events: all; 
+    opacity: 1;
+  }
+  .header-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .container {
+    height: 100%;
 
+  }

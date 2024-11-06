@@ -30,14 +30,23 @@ gulp.task('less-patients', function() {
         .pipe(gulp.dest('./patients'));
 })
 
+gulp.task('less-patientCard', function() {
+    return gulp.src('./patientCard/style.less')
+        .pipe(less())
+        .pipe(cleanCss())
+        .pipe(gulp.dest('./patientCard'));
+})
+
 gulp.task('watch', function() {
     gulp.watch('./authorization/style.less', gulp.series('less-authorization'));
     gulp.watch('./registration/style.less', gulp.series('less-registration'));
     gulp.watch('./patients/style.less', gulp.series('less-patients'));
+    gulp.watch('./patientCard/style.less', gulp.series('less-patientCard'));
     gulp.watch('./profile/style.less', gulp.series('less-profile'));
 })
 
 
 
-gulp.task('less', gulp.series('less-authorization', 'less-registration','less-profile','less-patients'));
+
+gulp.task('less', gulp.series('less-authorization', 'less-registration','less-profile','less-patients', 'less-patientCard'));
 gulp.task('default', gulp.series('less', 'watch'));
