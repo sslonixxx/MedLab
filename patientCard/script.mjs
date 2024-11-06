@@ -27,10 +27,13 @@ document.getElementById("logout").addEventListener("click", async (event) => {
 
 async function getPatientCard(patientId) {
     let patient = document.querySelector(".wrap-container2")
+    let patientWrap = document.querySelector(".wrap-container3")
     let patientName=document.createElement("h2")
     let birthday = document.createElement("div")
 
     let imageGender = document.createElement("img")
+   
+
 
     
 
@@ -49,6 +52,11 @@ async function getPatientCard(patientId) {
 
         const responseData = await response.json();
         patientName.textContent = responseData.name;
+        if (responseData.gender=="Male") {
+            imageGender.src = '../images/male.png'
+        } else {
+            imageGender.src = '../images/female.png'
+        }
 
         function formatDate(dateString) {
             const date = new Date(dateString);
@@ -60,8 +68,11 @@ async function getPatientCard(patientId) {
         }
         birthday.textContent = `Дата рождения: ${formatDate(responseData.birthday)}`
 
-        patient.appendChild(patientName);
+        patientWrap.appendChild(patientName);
+        patientWrap.appendChild(imageGender)
+        patientWrap.appendChild(patient)
         patient.appendChild(birthday)
+       
 
         
     } catch (error) {
