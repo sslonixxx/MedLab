@@ -34,7 +34,7 @@ import { Conclusions } from "./conclusions.mjs";
 
 
     function getSearchParams() {
-        const name = document.getElementById('name').value.trim(); 
+        const name = document.getElementById('name').value.trim();
         const conclusions = conclusionSelect.key; 
         const scheduledVisits = document.getElementById('scheduledVisits').checked; 
         const onlyMine = document.getElementById('onlyMine').checked;
